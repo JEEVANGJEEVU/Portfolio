@@ -108,3 +108,90 @@ scrollTop.forEach((el)=>observer.observe(el));
 function message() {
   confirm("request send successfully!!🤗")
 }
+
+//hire me 
+
+function hire() {
+  alert(`contact on "7795405756"`)
+}
+
+
+//contact 
+// JavaScript for contact form validation and submission
+document.addEventListener("DOMContentLoaded", () => {
+  const submitButton = document.getElementById("submitButton");
+  const form = document.querySelector("form");
+  const nameInput = form.querySelector("input[placeholder='your Name']");
+  const emailInput = form.querySelector("input[placeholder='your Gmail']");
+  const addressInput = form.querySelector("input[placeholder='your Address']");
+  const numberInput = form.querySelector("input[placeholder='your Number']");
+  const messageInput = form.querySelector("textarea");
+
+  // Add click event listener for the submit button
+  submitButton.addEventListener("click", (event) => {
+    event.preventDefault(); // Prevent form submission
+
+    // Validate form fields
+    if (validateForm()) {
+      // Show success message
+      alert("Thank you, " + nameInput.value + "! Your message has been sent successfully.");
+      
+      // Reset the form fields
+      form.reset();
+    }
+  });
+
+  function validateForm() {
+    // Basic validation check for required fields
+    if (nameInput.value.trim() === "") {
+      alert("Please enter your name.");
+      nameInput.focus();
+      return false;
+    }
+
+    if (emailInput.value.trim() === "") {
+      alert("Please enter your email.");
+      emailInput.focus();
+      return false;
+    }
+
+    if (!isValidEmail(emailInput.value)) {
+      alert("Please enter a valid email address.");
+      emailInput.focus();
+      return false;
+    }
+
+    if (addressInput.value.trim() === "") {
+      alert("Please enter your address.");
+      addressInput.focus();
+      return false;
+    }
+
+    if (numberInput.value.trim() === "") {
+      alert("Please enter your number.");
+      numberInput.focus();
+      return false;
+    }
+
+    if (!/^\d+$/.test(numberInput.value)) {
+      alert("Please enter a valid phone number.");
+      numberInput.focus();
+      return false;
+    }
+
+    if (messageInput.value.trim() === "") {
+      alert("Please enter a message.");
+      messageInput.focus();
+      return false;
+    }
+
+    return true; // All fields are valid
+  }
+
+  function isValidEmail(email) {
+    // Basic email format check
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return emailRegex.test(email);
+  }
+});
+
